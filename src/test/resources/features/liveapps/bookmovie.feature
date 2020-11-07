@@ -1,4 +1,5 @@
 Feature: Test all the major functionalities of Book My Show App
+Description: This feature file consists of scenarios which cover all the major user workflows.  
 
 @BMS-Smoke
   Scenario: As a user, I want to select the city as per my choice
