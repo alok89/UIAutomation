@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- APPENDER 1: CONSOLE -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <!-- APPENDER 2: ROLLING FILE -->
+        <RollingFile name="RollingFile" fileName="logs/alltests.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+
+        <!-- APPENDER 3: ROUTING APPENDER -->
+        <Routing name="Routing">
+            <Routes pattern="${ctx:ROUTINGKEY}">
+                <Route>
+                    <RollingFile name="NestedAppender-${ctx:ROUTINGKEY}" fileName="logs/test_${ctx:ROUTINGKEY}.log"
+                        										filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+                        <PatternLayout>
+                            <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy interval="6" modulate="true" />
+	  						<SizeBasedTriggeringPolicy size="10 MB" />
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+    </Appenders>
+    
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+            <AppenderRef ref="Routing" />
+        </Root>
+    </Loggers>
+</Configuration>
