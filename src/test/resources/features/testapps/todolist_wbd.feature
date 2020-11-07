@@ -1,5 +1,6 @@
 @webdriveruniversity2
-Feature: WebDriverUniversity App ToDoList
+Feature: Test WebDriverUniversity App ToDoList
+Description: This feature file consists of scenarios to test TODOList Feature of WebDriverUniversity App.
 
   Background: 
     Given I am on the WebDriverUniversity App Home Page
