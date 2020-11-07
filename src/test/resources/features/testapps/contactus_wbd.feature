@@ -1,6 +1,5 @@
 @webdriveruniversity1 
-Feature: Test WebDriverUniversity App ContactUs Form 
-Description: This feature file consists of scenarios to test Contact Us Form of WebDriverUniversity App. 
+Feature: WebDriverUniversity App ContactUs Form 
 
 Background: 
 	Given I am on the WebDriverUniversity App Home Page 
