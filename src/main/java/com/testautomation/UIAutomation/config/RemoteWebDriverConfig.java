@@ -27,7 +27,7 @@ public class RemoteWebDriverConfig {
 		ChromeOptions options = new ChromeOptions();
 		List<String> arguments = new ArrayList<>();
 		arguments.add("--no-sandbox"); // Environment for executing scripts in the browser
-		arguments.add("--disable-infobars");	// Inforamtion bars appearing on top of the browser
+		arguments.add("--disable-infobars");	// Information bars appearing on top of the browser
 		arguments.add("--disable-dev-shm-usage");	// Temporary file storage system which is quite less in size in linux
 		arguments.add("--disable-browser-side-navigation"); // Side bars in browser
 		arguments.add("--disable-gpu"); // Browser uses this to accelerate rendering process
