@@ -5,20 +5,21 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
 public class SwitchWindowService {
 	
 	@Autowired
+	private ApplicationContext appContext;
+	
 	private WebDriver driver;
 	
 	private List<String> windows;
 	
 	private void getAllWindows() {
+		driver = appContext.getBean(WebDriver.class);
 		windows = new ArrayList<>(driver.getWindowHandles());
 	}
 	

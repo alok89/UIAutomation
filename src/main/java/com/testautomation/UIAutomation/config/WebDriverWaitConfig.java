@@ -10,7 +10,7 @@ import com.testautomation.UIAutomation.annotations.LazyConfiguration;
 @LazyConfiguration
 public class WebDriverWaitConfig {
 
-	@Value("${webDriverWait.timeout}")
+	@Value("${webDriverWait.timeout:15}")
 	private int timeOut;
 
 	@BeanWithPrototypeScope
