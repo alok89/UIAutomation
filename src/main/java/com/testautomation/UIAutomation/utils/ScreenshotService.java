@@ -18,7 +18,7 @@ import com.github.javafaker.Faker;
 public class ScreenshotService {
 	
 	@Autowired
-	private ApplicationContext context;
+	private ApplicationContext appContext;
 	
 	@Lazy
 	@Autowired
@@ -43,7 +43,7 @@ public class ScreenshotService {
 	}
 	
 	private TakesScreenshot createTakesScreenshotInstance() {
-		driver = context.getBean(TakesScreenshot.class); 
+		driver = appContext.getBean(TakesScreenshot.class); 
 		return driver;
 	}
 

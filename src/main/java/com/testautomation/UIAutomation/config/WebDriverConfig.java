@@ -46,6 +46,11 @@ public class WebDriverConfig {
 	@ConditionalOnMissingBean
 	public WebDriver chromeDriver() {
 		WebDriverManager.chromedriver().setup();
+		ChromeOptions options = setChromeOptions();
+		return new ChromeDriver(options);
+	}
+	
+	private ChromeOptions setChromeOptions() {
 		Map<String, String> preferences = new HashMap<>();
 		preferences.put("download.default_directory", path);
 		ChromeOptions options = new ChromeOptions();
@@ -55,6 +60,6 @@ public class WebDriverConfig {
 			options.addArguments("window-size=1200x600");
 		}
 		options.setExperimentalOption("prefs", preferences);
-		return new ChromeDriver(options);
+		return options;
 	}
 }

@@ -9,15 +9,15 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
 public class ClickableElementLocatorFactoryService implements ElementLocatorFactory {
-
+	
 	@Autowired
+	private ApplicationContext appContext;
+
 	private WebDriver driver;
 	
 	@Value("${elementLocatorFactory.timeout}")
@@ -25,6 +25,7 @@ public class ClickableElementLocatorFactoryService implements ElementLocatorFact
 
 	@Override
 	public ElementLocator createLocator(Field field) {
+		driver = appContext.getBean(WebDriver.class);
 		return new ClickableElementLocator(driver, field, timeOutInSeconds);
 	}
 

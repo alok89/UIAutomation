@@ -7,13 +7,10 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
 public class FileDownloadService {
 
