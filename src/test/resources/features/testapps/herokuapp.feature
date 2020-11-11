@@ -9,10 +9,25 @@ Scenario: Check for all broken links
 	Then It should show all the broken links by returning the error code 
 	
 Scenario: Download any file present on the Secure File Download page using the links 
-	When I navigate to File Download Page by clicking on Secure File Download Link 
-	And Click on the "webdriverIO.png" link 
-	Then The "webdriverIO.png" file should get downloaded 
+	When I navigate to Secure File Download Page 
+	And Click on the "luminoslogo.png" link 
+	Then The "luminoslogo.png" file should get downloaded 
 	
 Scenario: Fetch all the emailids from the datatable 
-	When I navigate to Data Tables Page by clicking on Sortable Data Tables link 
+	When I navigate to Sortable Data Tables Page 
 	Then User should be able to fetch all the emailids from the datatable
+	
+Scenario: Test right click action inside context menu
+
+Scenario: Test dynamic loading of elements
+
+Scenario: Test Appearence of window based on mouse movement - exit intent
+
+Scenario: Test Horizontal Slider
+
+Scenario: Test MouseHover action using JQuery Menus
+
+Scenario: Test different keyboard keys
+
+Scenario: Test notification messages
+

@@ -20,7 +20,7 @@ public class FileDownloadService {
 	public boolean hasFileDownloaded(String fileName) {
 		File[] files = dirPath.listFiles();
 		int i = 0;
-		while(files.length == 0 && i < 15) {
+		while(files.length == 0 && i < 20) {
 			Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
 			i++;
 		}

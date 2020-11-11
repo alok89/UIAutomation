@@ -3,10 +3,10 @@ package com.testautomation.UIAutomation.stepdefs;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.testng.Assert;
 
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.apppages.herokuapp.DataTablesPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.HerokuAppLandingPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.SecureFileDownloadPage;
@@ -26,10 +26,10 @@ public class TestHerokuApp {
 	 * LogManager.getLogger(ThreadContext.get("ROUTINGKEY"));
 	 */
 
-	@Autowired
+	@LazyAutowired
 	private HerokuAppLandingPage herokuAppLandingPage;
 
-	@Autowired
+	@LazyAutowired
 	private FileDownloadService fileDownloadService;
 
 	@Value("${application.herokuapp_url}")
@@ -45,49 +45,47 @@ public class TestHerokuApp {
 	private List<WebElement> links;
 
 	@Given("I am on the HerokuApp Landing Page")
-	public void i_am_on_the_HerokuApp_Landing_Page() {
-		//logger.info("Step Execution - I am on the HerokuApp Landing Page");
+	public void iAmOnTheHerokuAppLanding_Page() {
 		herokuAppLandingPage.goTo(url);
 		Assert.assertTrue(herokuAppLandingPage.at());
 	}
 
 	@When("I hit the links")
-	public void i_hit_the_links() {
-		//logger.info("Step Execution - I hit the links");
-		links = herokuAppLandingPage.getAllLinksFromThePage();
+	public void iHitTheLinks() {
+		links = herokuAppLandingPage.getAllLinks();
 		Assert.assertTrue(!links.isEmpty());
 	}
 
 	@Then("It should show all the broken links by returning the error code")
-	public void it_should_show_all_the_broken_links_by_returning_the_error_code() {
-		List<String> workingLinks = herokuAppLandingPage.getAllWorkingLinks(links);
+	public void itShouldShowAllTheBrokenLinksByReturningTheErrorCode() {
+		List<String> workingLinks = herokuAppLandingPage.getAllWorkingLinks();
 		Assert.assertTrue(workingLinks.size() > 35);
 	}
 	
-	@When("I navigate to File Download Page by clicking on Secure File Download Link")
-	public void i_navigate_to_File_Download_Page_by_clicking_on_Secure_File_Download_Link() {
+	@When("I navigate to Secure File Download Page")
+	public void iNavigateToSecureFileDownloadPage() {
 		fileDownloadPage = herokuAppLandingPage.goToSecureFileDownloadPage();
 		Assert.assertTrue(fileDownloadPage.at());
 	}
 
 	@And("Click on the {string} link")
-	public void click_on_any_downloadable_link(String fileName) {
-		fileDownloadPage.clickLinkToDownLoad(fileName);
+	public void clickOnAnyDownloadableLink(String fileName) {
+		fileDownloadPage.downLoadLink(fileName);
 	}
 
 	@Then("The {string} file should get downloaded")
-	public void the_file_should_get_downloaded(String fileName) {
+	public void theFileShouldGetDownloaded(String fileName) {
 		Assert.assertTrue(fileDownloadService.hasFileDownloaded(fileName));
 	}
 
-	@When("I navigate to Data Tables Page by clicking on Sortable Data Tables link")
-	public void i_navigate_to_Data_Tables_Page_by_clicking_on_Sortable_Data_Tables_link() {
+	@When("I navigate to Sortable Data Tables Page")
+	public void iNavigateToSortableDataTablesPage() {
 		dataTablesPage = herokuAppLandingPage.goToDataTablesPage();
 		Assert.assertTrue(dataTablesPage.at());
 	}
 
 	@Then("User should be able to fetch all the emailids from the datatable")
-	public void user_should_be_able_to_fetch_all_the_emailids_from_the_datatable() {
+	public void userShouldBeAbleToFetchAllTheEmailidsFromTheDatatable() {
 		List<String> emailIds = dataTablesPage.getAllValuesFromAColumn(columnName);
 		Assert.assertTrue(emailIds.size() == 4);
 	}

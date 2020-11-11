@@ -1,15 +1,18 @@
 package com.testautomation.UIAutomation.apppages.herokuapp;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.annotations.Page;
 import com.testautomation.UIAutomation.apppages.BasePage;
+import com.testautomation.UIAutomation.webelements.Link;
 
 @Page
 public class HerokuAppLandingPage extends BasePage {
@@ -17,10 +20,13 @@ public class HerokuAppLandingPage extends BasePage {
 	@Value("Welcome to the-internet")
 	private String text;
 	
-	@Autowired
+	@LazyAutowired
+	private Link link;
+	
+	@LazyAutowired
 	private SecureFileDownloadPage fileDownloadPage;
 	
-	@Autowired
+	@LazyAutowired
 	private DataTablesPage dataTablesPage;
 
 	@FindBy(how = How.TAG_NAME, using = "h1")
@@ -38,6 +44,14 @@ public class HerokuAppLandingPage extends BasePage {
 	public DataTablesPage goToDataTablesPage() {
 		dataTables_Link.click();
 		return dataTablesPage;
+	}
+	
+	public List<WebElement> getAllLinks() {
+		return link.getAllLinksFromThePage();
+	}
+	
+	public List<String> getAllWorkingLinks() {
+		return link.getAllWorkingLinks(getAllLinks());
 	}
 	
 	public SecureFileDownloadPage goToSecureFileDownloadPage() {
