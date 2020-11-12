@@ -8,6 +8,7 @@ import org.testng.Assert;
 
 import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.apppages.herokuapp.DataTablesPage;
+import com.testautomation.UIAutomation.apppages.herokuapp.DynamicLoadingPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.HerokuAppLandingPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.SecureFileDownloadPage;
 import com.testautomation.UIAutomation.utils.FileDownloadService;
@@ -42,6 +43,8 @@ public class TestHerokuApp {
 	private DataTablesPage dataTablesPage;
 	
 	private SecureFileDownloadPage fileDownloadPage;
+	
+	private DynamicLoadingPage dynamicLoadingPage;
 	
 	private List<WebElement> links;
 
@@ -93,26 +96,24 @@ public class TestHerokuApp {
 
 	@Given("user is on dynamic loading page")
 	public void userIsOnDynamicLoadingPage() {
-	    
-	    
+	    dynamicLoadingPage = herokuAppLandingPage.goToDynamicLoadingPage();
+	    Assert.assertTrue(dynamicLoadingPage.at());
 	}
 
 	@When("user clicks on {string}")
-	public void userClicksOn(String string) {
-	    
-	    
+	public void userClicksOn(String exampleLink) {
+	    dynamicLoadingPage.goToExample(exampleLink.trim());
 	}
 
 	@When("start the loading process")
 	public void startTheLoadingProcess() {
-	    
-	    
+	    dynamicLoadingPage.startLoading();
 	}
 
 	@Then("the element {string} should get rendered")
-	public void theElementShouldGetRendered(String string) {
-	    
-	    
+	public void theElementShouldGetRendered(String expectedText) {
+	    dynamicLoadingPage.waitForElementToBeFound();
+	    Assert.assertEquals(dynamicLoadingPage.getElementText(), expectedText);
 	}
 
 	@Given("user is on exit intent page")

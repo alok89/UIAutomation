@@ -22,6 +22,7 @@ Scenario: Fetch all the emailids from the datatable
 	Then user should be able to fetch all the emailids from the datatable
 
 # Examples table can have a title and it belongs to immediately preceding scenario outline section
+@test-scenario
 Scenario Outline: Dynamic loading of elements
 	Given user is on dynamic loading page
 	When user clicks on "<example link>"

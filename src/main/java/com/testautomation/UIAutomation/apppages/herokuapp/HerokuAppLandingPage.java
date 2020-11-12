@@ -28,6 +28,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@LazyAutowired
 	private DataTablesPage dataTablesPage;
+	
+	@LazyAutowired
+	private DynamicLoadingPage dynamicLoadingPage;
 
 	@FindBy(how = How.TAG_NAME, using = "h1")
 	private WebElement pageHeading_Text;
@@ -35,8 +38,8 @@ public class HerokuAppLandingPage extends BasePage {
 	@FindBy(how = How.LINK_TEXT, using = "Sortable Data Tables")
 	private WebElement dataTables_Link;
 	
-	@FindBy(how = How.LINK_TEXT, using = "Context Menu")
-	private WebElement contextMenu_Link;
+	@FindBy(how = How.LINK_TEXT, using = "Dynamic Loading")
+	private WebElement dynamicLoading_Link;
 
 	@Override
 	public boolean at() {
@@ -47,6 +50,11 @@ public class HerokuAppLandingPage extends BasePage {
 	public DataTablesPage goToDataTablesPage() {
 		dataTables_Link.click();
 		return dataTablesPage;
+	}
+	
+	public DynamicLoadingPage goToDynamicLoadingPage() {
+		dynamicLoading_Link.click();
+		return dynamicLoadingPage;
 	}
 	
 	public List<WebElement> getAllLinks() {
