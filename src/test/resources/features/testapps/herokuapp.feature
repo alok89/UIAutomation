@@ -20,12 +20,6 @@ Scenario: Download a file present on the Secure File Download page
 Scenario: Fetch all the emailids from the datatable 
 	When user navigates to Sortable Data Tables Page 
 	Then user should be able to fetch all the emailids from the datatable
-	
-Scenario: Mouse right click action
-	Given user is on context menu page
-	When user right clicks in the box
-	Then an alert "You selected a context menu" gets triggered
-	And context menu should get displayed
 
 # Examples table can have a title and it belongs to immediately preceding scenario outline section
 Scenario Outline: Dynamic loading of elements

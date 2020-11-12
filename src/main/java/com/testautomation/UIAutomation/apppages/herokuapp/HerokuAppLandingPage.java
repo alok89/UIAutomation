@@ -34,6 +34,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@FindBy(how = How.LINK_TEXT, using = "Sortable Data Tables")
 	private WebElement dataTables_Link;
+	
+	@FindBy(how = How.LINK_TEXT, using = "Context Menu")
+	private WebElement contextMenu_Link;
 
 	@Override
 	public boolean at() {

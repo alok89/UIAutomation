@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions.SnippetType;
 @CucumberOptions (
 		features = "classpath:features",
 		glue = "com.testautomation.UIAutomation",
-		tags = "@heroku", /*"@BMS-Smoke" /*or (@BMS-Smoke and @BMS-UAT) or @BMS-UAT"*/ //or @webdriveruniversity1 or @webdriveruniversity2",
+		tags = "(@heroku and @test-scenario)", /*"@BMS-Smoke" /*or (@BMS-Smoke and @BMS-UAT) or @BMS-UAT"*/ //or @webdriveruniversity1 or @webdriveruniversity2",
 		monochrome = true,
 		plugin = {"pretty", 
 				  "html:reports/cucumber-report.html",

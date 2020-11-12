@@ -13,7 +13,6 @@ import com.testautomation.UIAutomation.apppages.herokuapp.SecureFileDownloadPage
 import com.testautomation.UIAutomation.utils.FileDownloadService;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -90,29 +89,6 @@ public class TestHerokuApp {
 	public void userShouldBeAbleToFetchAllTheEmailidsFromTheDatatable() {
 		List<String> emailIds = dataTablesPage.getAllValuesFromAColumn(columnName);
 		Assert.assertTrue(emailIds.size() == 4);
-	}
-	
-	@Given("user is on context menu page")
-	public void userIsOnContextMenuPage() throws PendingException {
-	    
-	}
-	
-	@When("user right clicks in the box")
-	public void userRightClicksInTheBox() {
-	    
-	    
-	}
-
-	@Then("an alert {string} gets triggered")
-	public void anAlertGetsTriggered(String string) {
-	    
-	    
-	}
-
-	@Then("context menu should get displayed")
-	public void contextMenuShouldGetDisplayed() {
-	    
-	    
 	}
 
 	@Given("user is on dynamic loading page")
