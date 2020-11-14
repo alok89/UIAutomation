@@ -10,6 +10,7 @@ import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.apppages.herokuapp.DataTablesPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.DynamicLoadingPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.HerokuAppLandingPage;
+import com.testautomation.UIAutomation.apppages.herokuapp.HorizontalSliderPage;
 import com.testautomation.UIAutomation.apppages.herokuapp.SecureFileDownloadPage;
 import com.testautomation.UIAutomation.utils.FileDownloadService;
 
@@ -45,6 +46,8 @@ public class TestHerokuApp {
 	private SecureFileDownloadPage fileDownloadPage;
 	
 	private DynamicLoadingPage dynamicLoadingPage;
+	
+	private HorizontalSliderPage horizontalSliderPage;
 	
 	private List<WebElement> links;
 
@@ -116,46 +119,21 @@ public class TestHerokuApp {
 	    Assert.assertEquals(dynamicLoadingPage.getElementText(), expectedText);
 	}
 
-	@Given("user is on exit intent page")
-	public void userIsOnExitIntentPage() {
-	    
-	    
-	}
-
-	@When("user moves the mouse out of viewport")
-	public void userMovesTheMouseOutOfViewport() {
-	    
-	    
-	}
-
-	@Then("a modal window gets appeared with the text")
-	public void aModalWindowGetsAppearedWithTheText(String docString) {
-	    
-	    
-	}
-
 	@Given("user is on horizontal slider page")
 	public void userIsOnHorizontalSliderPage() {
-	    
-	    
+	    horizontalSliderPage = herokuAppLandingPage.goToHorizontalSliderPage();
+	    Assert.assertTrue(horizontalSliderPage.at());
 	}
 
-	@When("user clicks on the slider")
-	public void userClicksOnTheSlider() {
-	    
-	    
-	}
-
-	@When("moves the slider using {string}")
-	public void movesTheSliderUsing(String string) {
-	    
-	    
+	@When("moves the slider to {string}")
+	public void movesTheSliderTo(String value) {
+	    horizontalSliderPage.moveSliderTo(Double.parseDouble(value));
 	}
 
 	@Then("the {string} should get updated accordingly")
-	public void theShouldGetUpdatedAccordingly(String string) {
-	    
-	    
+	public void theShouldGetUpdatedAccordingly(String expectedRange) {
+	    String actualValue = String.valueOf(horizontalSliderPage.getSliderValue());
+	    Assert.assertEquals(actualValue, expectedRange);
 	}
 
 	@Given("user is on jqueryui-menu page")

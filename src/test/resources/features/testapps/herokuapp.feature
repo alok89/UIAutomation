@@ -22,7 +22,6 @@ Scenario: Fetch all the emailids from the datatable
 	Then user should be able to fetch all the emailids from the datatable
 
 # Examples table can have a title and it belongs to immediately preceding scenario outline section
-@test-scenario
 Scenario Outline: Dynamic loading of elements
 	Given user is on dynamic loading page
 	When user clicks on "<example link>"
@@ -34,25 +33,16 @@ Scenario Outline: Dynamic loading of elements
 		|Example 1: Element on page that is hidden |Hello World!|
 		|Example 2: Element rendered after the fact|Hello World!|
 
-# Passing a doc string as an input parameter to the step
-Scenario: Appearence of window after moving out of the viewport pane
-	Given user is on exit intent page
-	When user moves the mouse out of viewport
-	Then a modal window gets appeared with the text
-		"""
-		It's commonly used to encourage a user to take an action (e.g., give their e-mail address to sign up for something).
-		"""
-
+@test-scenario
 Scenario Outline: Horizontal Slider
 	Given user is on horizontal slider page
-	When user clicks on the slider
-	And moves the slider using "<action>"
+	When moves the slider to "<value>"
 	Then the "<value>" should get updated accordingly
 	
 	Examples:
-	  |action    |value| 
-		|Arrow Keys|4.5	 |
-		|Drag			 |3		 |
+	  |value | 
+		|4.5 	 |
+		|2.0	 |
 		
 # Passing a step table as an input parameter to the step
 Scenario: MouseHover on JQuery menus

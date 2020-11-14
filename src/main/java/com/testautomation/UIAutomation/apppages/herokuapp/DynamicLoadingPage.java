@@ -13,11 +13,11 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 
 import com.google.common.util.concurrent.Uninterruptibles;
-import com.testautomation.UIAutomation.annotations.PageComponent;
+import com.testautomation.UIAutomation.annotations.Page;
 import com.testautomation.UIAutomation.apppages.BasePage;
 
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-@PageComponent
+@Page
 public class DynamicLoadingPage extends BasePage {
 
 	private static final String PAGE_URL_LABEL = "dynamic_loading";

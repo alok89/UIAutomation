@@ -31,6 +31,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@LazyAutowired
 	private DynamicLoadingPage dynamicLoadingPage;
+	
+	@LazyAutowired
+	private HorizontalSliderPage horizontalSliderPage;
 
 	@FindBy(how = How.TAG_NAME, using = "h1")
 	private WebElement pageHeading_Text;
@@ -40,6 +43,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@FindBy(how = How.LINK_TEXT, using = "Dynamic Loading")
 	private WebElement dynamicLoading_Link;
+	
+	@FindBy(how = How.LINK_TEXT, using = "Horizontal Slider")
+	private WebElement horizontalSlider_Link;
 
 	@Override
 	public boolean at() {
@@ -55,6 +61,11 @@ public class HerokuAppLandingPage extends BasePage {
 	public DynamicLoadingPage goToDynamicLoadingPage() {
 		dynamicLoading_Link.click();
 		return dynamicLoadingPage;
+	}
+	
+	public HorizontalSliderPage goToHorizontalSliderPage() {
+		horizontalSlider_Link.click();
+		return horizontalSliderPage;
 	}
 	
 	public List<WebElement> getAllLinks() {
