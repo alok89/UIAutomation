@@ -34,6 +34,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@LazyAutowired
 	private HorizontalSliderPage horizontalSliderPage;
+	
+	@LazyAutowired
+	private KeyPressesPage keyPressesPage;
 
 	@FindBy(how = How.TAG_NAME, using = "h1")
 	private WebElement pageHeading_Text;
@@ -46,6 +49,9 @@ public class HerokuAppLandingPage extends BasePage {
 	
 	@FindBy(how = How.LINK_TEXT, using = "Horizontal Slider")
 	private WebElement horizontalSlider_Link;
+	
+	@FindBy(how = How.LINK_TEXT, using = "Key Presses")
+	private WebElement keyPresses_Link;
 
 	@Override
 	public boolean at() {
@@ -66,6 +72,11 @@ public class HerokuAppLandingPage extends BasePage {
 	public HorizontalSliderPage goToHorizontalSliderPage() {
 		horizontalSlider_Link.click();
 		return horizontalSliderPage;
+	}
+	
+	public KeyPressesPage goToKeyPressesPage() {
+		keyPresses_Link.click();
+		return keyPressesPage;
 	}
 	
 	public List<WebElement> getAllLinks() {

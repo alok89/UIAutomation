@@ -33,7 +33,7 @@ Scenario Outline: Dynamic loading of elements
 		|Example 1: Element on page that is hidden |Hello World!|
 		|Example 2: Element rendered after the fact|Hello World!|
 
-@test-scenario
+
 Scenario Outline: Horizontal Slider
 	Given user is on horizontal slider page
 	When moves the slider to "<value>"
@@ -43,37 +43,25 @@ Scenario Outline: Horizontal Slider
 	  |value | 
 		|4.5 	 |
 		|2.0	 |
-		
-# Passing a step table as an input parameter to the step
-Scenario: MouseHover on JQuery menus
-	Given user is on jqueryui-menu page
-	When user mouse hovers on enabled option
-	And user mouse hovers on downloads option 
-	Then options inside downloads should get displayed
-		|options|
-		|PDF		|
-		|CSV		|
-		|Excel	|
 
 # Examples table provides parameterization and each example becomes a parameter for a single test scenario
+@test-scenario
 Scenario Outline: Different keypresses inside the textbox
 	Given user is on key_presses page
 	When user enters the "<key>"
 	Then "<key>" should get displayed
 	
 	Examples:
-		|key			 |
-		|TAB			 |
-		|ALT			 |
-		|ESCAPE		 |
-		|SHIFT		 |
-		|ENTER		 |
-		|F2				 |
-		|PERIOD    |
-		|CAPS_LOCK |
-		|BACK_SPACE|
-		|K				 |
-		|8				 |
-		|NUMPAD3	 |
-		|QUOTE		 |
+		|key			  |
+#		|TAB			  |
+#		|ALT			  |
+#		|ESCAPE		  |
+#		|SHIFT		  |
+#		|ENTER		  |
+#		|F2				  |
+#		|ARROW_RIGHT|
+#		|BACK_SPACE |
+		|HOME			  |
+#		|PAGE_UP    |
+#		|NUMPAD3	  |
 
