@@ -32,7 +32,7 @@ public class WorkshopsForAllSectionComponent {
 	@FindBy(how = How.CSS, using = "div[class='commonStyles__FullWidgetWrapper-sc-1k17atf-4 hOGemf']:nth-child(3) div[class='style__WidgetContainerBody-sc-10gjjdh-2 guafqu']>a")
 	private List<WebElement> workshopsList;
 	
-	private final By workshopTabLocator = By.cssSelector("div[class='style__WidgetContainerBody-sc-10gjjdh-2 guafqu']>a");
+	private final By workshopTabLocator = By.xpath("//div[@class='commonStyles__FullWidgetWrapper-sc-1k17atf-4 hOGemf'][4]//div[contains(@class, 'style__WidgetContainerBody-sc-10gjjdh-2')]//a");
 	
 	public boolean atWorkshopsSection() {
 		return getTotalNumberOfWorkshops() >= 1;

@@ -118,9 +118,6 @@ public class TestBookMyShow {
 		Assert.assertEquals(movieDetailsPage.getLanguages().get(0), data.get(i++));
 		Assert.assertEquals(movieDetailsPage.getGenres(), Arrays.asList(data.get(i++).split(" ")));
 		Assert.assertEquals(movieDetailsPage.getReleaseDate(), data.get(i++));
-		int actualVoteCount = Integer.parseInt(movieDetailsPage.getTotalNumberOfVotes());
-		int expectedVoteCount = Integer.parseInt(data.get(i));
-		Assert.assertTrue(actualVoteCount >= expectedVoteCount);
 	}
 	
 	@Given("User is on home page")
@@ -170,7 +167,9 @@ public class TestBookMyShow {
 
 	@Then("{string} workshop should be listed under all workshops")
 	public void workshopShouldBeListedUnderAllWorkshops(String workshopName) {
-		workshopsSection.getAllWorkshopsTitle().forEach(System.out::println);
+		workshopsSection
+					.getAllWorkshopsTitle()
+					.forEach(System.out::println);
 	    Assert.assertTrue(workshopsSection.isWorkshopGoingOn(workshopName));   
 	}
 

@@ -1,63 +1,58 @@
-Feature: Test all the major functionalities of Book My Show App
-Description: This feature file consists of scenarios which cover all the major user workflows.  
+@bookmyshow
+Feature: BookMyShowApp features
+	User Story : As a user, I want to test all the major functionalities of BookMyShow App
+	
 
-@BMS-Smoke
-  Scenario: As a user, I want to select the city as per my choice
+  Scenario: Select the city as per the user's choice
     Given User is on home page
     And City Selection popup is displayed
     When User selects the city as "Pune"
     Then "Pune" city should get appeared on the app header
     
-@BMS-Smoke @BMS-UAT
-  Scenario: As a user, I want to see all the upcoming movies
+  Scenario: List all the upcoming movies
     Given User is on movies page
     When User selects the Coming Soon tab
     Then More than 1 upcoming movie should be seen listed
     
  #Passing data through EXAMPLES which is applicable to whole scenario
-@BMS-UAT
-  Scenario Outline: 
-    As a user, I want to filter out movies based on different conditions
+  Scenario Outline: Filter out movies based on different conditions
     Given User is on movies page
     When User selects the Coming Soon tab
     And Selects language "<language>" filter condition
     And Selects genre "<genre>" filter condition
     Then All the movies "<count>" should be listed based on the conditions
+    
     Examples: 
       | language | genre            | count |
-      | Hindi    | Romantic,Crime   |    19 |
-      | English  | Adventure,Sci-Fi |    24 |
+      | Hindi    | Romantic,Crime   |    5  |
+      | English  | Adventure,Sci-Fi |    4  |
 
  #Passing data through DATA TABLE which is applicable to only one preceded step
-@BMS-UAT
-  Scenario: As a user, I want to get all the movie details
+  Scenario: List all the movie details
     Given User is on movies page
     When User selects the Coming Soon tab
-    And User selects the movie "Chhalaang"
-    Then User should get navigated to "Chhalaang" movie details page
+    And User selects the movie "The Big Bull"
+    Then User should get navigated to "The Big Bull" movie details page
     And All the details of the movie should be mentioned
-      | HINDI        |
-      | COMEDY DRAMA |
-      | 13 Nov 2020  |
-      | 3278 				 |
+      |Hindi       |
+      |Crime Drama |
+      |Dec 2020		 |
+      |3.9K    		 |
 
-@BMS-Smoke @BMS-UAT
-  Scenario: As a user, I want to see all the on-going trending movies
+  Scenario: List all the on-going trending movies
     When User moves to "Trending Searches Right Now" Section to search
     Then More than 1 trending movie should be listed
 
- #Need to update the workshop name
-@BMS-UAT
-  Scenario: As a user, I want to search an on going workshop
+ #Need to update the workshop name as per the latest workshop
+  Scenario: Search for an on going workshop
     When User moves to "Workshops For All" Section to search
-    Then "Certified Digital Marketing Course" workshop should be listed under all workshops
+    Then "Using Ayurveda for a Healthy Lifestyle" workshop should be listed under all workshops
 
-@BMS-UAT
-  Scenario Outline: 
-    As a user, I want to see all the offers running on different Debit Cards
+  Scenario Outline: List all the offers running on different Debit Cards
     Given User is on offers page
     When User selects "Debit Card" as payment option
     Then "<offers>" offers on the "<bank>" payment option should get displayed
+    
     Examples: 
       | bank     | offers |
       | ICICI    |      1 |
@@ -66,9 +61,8 @@ Description: This feature file consists of scenarios which cover all the major u
       | INDUSIND |      2 |
       | YES			 | 			1 |
       | IDFC		 | 			1 |
-      
- @BMS-UAT   
-    Scenario: As a user, I want to search an event
-    When User searches for an event "Art & Drawing - Junior Kids"
-    Then The matching event "Art & Drawing - Junior Kids" should get listed in the suggestion box
-    And User should get navigated to the specific events page "Art & Drawing - Junior Kids" after clicking on the event
+       
+  Scenario: Search for an event
+    When User searches for an event "Art & Drawing - Junior Kids - Hobbystation"
+    Then The matching event "Art & Drawing - Junior Kids - Hobbystation" should get listed in the suggestion box
+    And User should get navigated to the specific events page "Art & Drawing - Junior Kids - Hobbystation" after clicking on the event

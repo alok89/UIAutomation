@@ -61,8 +61,9 @@ public class Link {
 
 	public void clickOnAParticularLink(String linkName) {
 		List<WebElement> links = getAllLinksFromThePage();
-		Optional<WebElement> linkElement = links.stream().filter(element -> element.getText().equals(linkName))
-				.findFirst();
+		Optional<WebElement> linkElement = links.stream()
+												.filter(element -> element.getText().equals(linkName))
+												.findFirst();
 		if (linkElement.isPresent()) {
 			WebElement element = linkElement.get();
 			element.click();

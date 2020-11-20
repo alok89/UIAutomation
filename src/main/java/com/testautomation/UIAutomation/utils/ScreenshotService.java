@@ -26,14 +26,16 @@ public class ScreenshotService {
 	
 	private TakesScreenshot driver;
 	
-	public void getScreenshotAsFile(Path path, String screenshotName) {
+	public String getScreenshotAsFile(Path path, String screenshotName) {
 		createTakesScreenshotInstance();
+		File destinationFile = path.resolve(screenshotName+".jpg").toFile();
 		File sourceFile = driver.getScreenshotAs(OutputType.FILE);
 		try {
-			FileCopyUtils.copy(sourceFile, path.resolve(screenshotName+".jpg").toFile());
+			FileCopyUtils.copy(sourceFile, destinationFile);
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
+		return destinationFile.getPath();
 	}
 	
 	public byte[] getScreenshotAsBytes() {

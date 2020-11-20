@@ -17,27 +17,27 @@ public class MovieDetailsPage extends BasePage {
 	@Value(" Movie (2020) | Reviews, Cast & Release Date in Bengaluru -  BookMyShow")
 	private String pageTitle;
 	
-	@FindBy(how = How.CSS, using = "div.certificate-languages>a[itemprop='inLanguage']")
+	@FindBy(how = How.CSS, using = "div[class='styles__LinkedElementsContainer-cri7zi-3 bDobwC']:nth-child(2)>a")
 	private List<WebElement> availableLanguages_List;
 	
-	@FindBy(how = How.CSS, using = "div.certificate-languages>a[itemprop='genre']")
+	@FindBy(how = How.CSS, using = "div[class='styles__EventAttributesContainer-cri7zi-1 chtNjF']>a")
 	private List<WebElement> genres_List;
 	
-	@FindBy(how = How.CSS, using = "div.date-time span.__release-date")
+	@FindBy(how = How.CSS, using = "div[class='styles__EventAttributesContainer-cri7zi-1 chtNjF']:first-child")
 	private WebElement releaseDate;
 	
-	@FindBy(how = How.CSS, using = "#user-wts-true span.__votes")
+	@FindBy(how = How.CSS, using = "div[class='styles__InterestWrapper-tayyzf-1 ctJdbJ'] span[class='styles__InterestedCount-sc-13dnaf1-2 dQPqvM']")
 	private WebElement totalVotes_Count;
 	
-	@FindBy(how = How.CSS, using = "div.name-rating>h1[itemprop='name']")
+	@FindBy(how = How.CSS, using = "h1[class^='styles__EventHeading-sc-16qvuq-6']")
 	private WebElement movieName;
 	
-	@FindBy(how = How.CLASS_NAME, using = "movie-synopsis-content-wrapper")
-	private WebElement movieDetails_Wrapper;
+	@FindBy(how = How.CSS, using = "div[class*='styles__BannerContainer-sc-16qvuq-2']")
+	private WebElement movieBanner;
 
 	@Override
 	public boolean at() {
-		return movieDetails_Wrapper.isEnabled();
+		return movieBanner.isEnabled();
 	}
 	
 	public List<String> getLanguages() {

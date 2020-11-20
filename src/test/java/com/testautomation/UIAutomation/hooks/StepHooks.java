@@ -12,6 +12,7 @@ import io.cucumber.java.Scenario;
 
 public class StepHooks {
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private ScreenshotService screenshotService;
 	
@@ -20,9 +21,12 @@ public class StepHooks {
 	
 	@AfterStep
 	public void afterStep(Scenario scenario) {
-		String scenarioName = scenario.getName();
-		String lineNo = scenario.getLine().toString();
-		screenshotService.getScreenshotAsFile(path.resolve(scenarioName), "Step_"+lineNo);
+		/*
+		 * String scenarioName = scenario.getName(); String lineNo =
+		 * scenario.getLine().toString();
+		 * screenshotService.getScreenshotAsFile(path.resolve(scenarioName),
+		 * "Step_"+lineNo);
+		 */
 		//scenario.attach(screenshotService.getScreenshotAsBytes(), "image/png", scenarioName+"_"+lineNo);
 	}
 

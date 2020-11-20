@@ -8,7 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.utils.ManageFilesDirectories;
+import com.testautomation.UIAutomation.utils.ScreenshotService;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -25,22 +27,26 @@ public class ScenarioHooks {
 	@Autowired
 	private ManageFilesDirectories manageDirectories;
 	
+	@LazyAutowired
+	private ScreenshotService screenshotService;
+	
 	//private Logger logger = LogManager.getLogger();
 
 	@Before(order = 0)
 	public void beforeScenario(Scenario scenario) {
 		String scenarioName = scenario.getName();
 		System.out.println("Scenario SetUp : "+getFeatureName(scenario)+" > "+scenarioName);
-		//logger.info("\n===============Scenario SetUp : "+getFeatureName(scenario)+" > "+scenarioName+"===============");
-		createScreenshotDirectory(scenarioName);
 	}
 	
 	@After
 	public void afterScenario(Scenario scenario) {
-		//logger.info("===============Scenario Status : "+scenario.getStatus().toString()+"===============\n");
+		String scenarioName = scenario.getName();
+		System.out.println("Scenario Name : "+scenarioName);
+		scenario.attach(screenshotService.getScreenshotAsBytes(), "image/png", scenarioName);
 		driver.quit();
 	}
 
+	@SuppressWarnings("unused")
 	private void createScreenshotDirectory(String scenarioName) {
 		//logger.debug("Creating Screenshot Directory");
 		path = path.resolve(scenarioName);
