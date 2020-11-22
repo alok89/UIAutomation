@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-  
-<suite name="Test-Suite" parallel="tests" thread-count="3">
-  <test name="App-Tests">
-    <classes>
-       <class name="com.testautomation.UIAutomation.runners.Test_ScenariosRunner" />
-    </classes>
-  </test>
-</suite>
