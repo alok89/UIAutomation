@@ -12,6 +12,7 @@ import io.cucumber.testng.CucumberOptions.SnippetType;
 		features = "classpath:features",
 		glue = "com.testautomation.UIAutomation",
 		tags = "@heroku", //or @webdriveruniversity1",
+		dryRun = true,
 		monochrome = true,
 		plugin = {"pretty", 
 				  //"html:reports/cucumber-report.html",
