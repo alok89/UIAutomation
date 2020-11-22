@@ -1,6 +1,6 @@
 @heroku
 Feature: HerokuApp features
-	User Story : As a user, I want to test different fucntionalities of Heroku app. 
+	User Story : As a user, I want to test different functionalities of Heroku app. 
 
 
 # Background section does not have title or description and it should be only one per feature file
@@ -55,7 +55,6 @@ Scenario Outline: Different keypresses inside the textbox
 		|ALT			  |
 		|ESCAPE		  |
 		|SHIFT		  |
-		|ENTER		  |
 		|F2				  |
 		|ARROW_RIGHT|
 		|BACK_SPACE |

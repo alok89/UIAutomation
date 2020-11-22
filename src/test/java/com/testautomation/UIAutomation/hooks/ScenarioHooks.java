@@ -41,7 +41,6 @@ public class ScenarioHooks {
 	@After
 	public void afterScenario(Scenario scenario) {
 		String scenarioName = scenario.getName();
-		System.out.println("Scenario Name : "+scenarioName);
 		scenario.attach(screenshotService.getScreenshotAsBytes(), "image/png", scenarioName);
 		driver.quit();
 	}
