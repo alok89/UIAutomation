@@ -65,10 +65,11 @@ public class ContactUsPage extends BasePage {
 	}
 	
 	public boolean whetherAllFieldsContainValues() {
-		String firstName = firstName_Textbox.getAttribute("value");
-		String lastName = lastName_Textbox.getAttribute("value");
-		String emailAddress = emailAddress_Textbox.getAttribute("value");
-		String comments = comments_Textbox.getAttribute("value");
+		final String attributeName = "value";
+		String firstName = firstName_Textbox.getAttribute(attributeName);
+		String lastName = lastName_Textbox.getAttribute(attributeName);
+		String emailAddress = emailAddress_Textbox.getAttribute(attributeName);
+		String comments = comments_Textbox.getAttribute(attributeName);
 		return ((!firstName.isEmpty()) && (!lastName.isEmpty()) && (!emailAddress.isEmpty()) && (!comments.isEmpty()));
 	}
 	

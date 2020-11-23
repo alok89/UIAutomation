@@ -79,18 +79,20 @@ public class BMSLandingPage extends BasePage {
 	}
 	
 	public TrendingSearchesSectionComponent moveToTrendingSearchSection() {
-		if(isSectionDisplayed("Trending Searches Right Now"))
+		if (isSectionDisplayed("Trending Searches Right Now")) {
 			return trendingSection;
-		else
+		} else {
 			throw new RuntimeException("Trending Searches Right Now section not present");
+		}
 	}
-	
-	public WorkshopsForAllSectionComponent moveToWorkshopsSection () {
-		if(isSectionDisplayed("Workshops For All")) {
+
+	public WorkshopsForAllSectionComponent moveToWorkshopsSection() {
+		if (isSectionDisplayed("Workshops For All")) {
 			System.out.println("Workshops For All Section found.");
 			return workshopsSection;
-		}else 
+		} else {
 			throw new RuntimeException("Workshops For All section not present");
+		}
 	}
 	
 	public SearchComponent goToSearch() {
@@ -137,10 +139,10 @@ public class BMSLandingPage extends BasePage {
 	}
 	
 	private boolean isSectionDisplayed(String sectionName) {
-		if(getTotalDisplayedSection() >= 1) {
+		if (getTotalDisplayedSection() >= 1) {
 			return sectionNames.stream()
-							.anyMatch(element -> sectionName.equals(element.getText().trim()));
-		} else 
-			return false;
+								.anyMatch(element -> sectionName.equals(element.getText().trim()));
+		}
+		return false;
 	}
 }

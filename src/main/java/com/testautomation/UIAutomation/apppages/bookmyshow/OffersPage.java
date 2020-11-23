@@ -37,8 +37,8 @@ public class OffersPage extends BasePage {
 												.findFirst();
 		if(payOption.isPresent()) {
 			option = payOption.get();
+			option.click();
 		}
-		option.click();
 		return option;
 	}
 	

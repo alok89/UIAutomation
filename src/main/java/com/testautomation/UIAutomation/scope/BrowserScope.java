@@ -23,6 +23,6 @@ public class BrowserScope extends SimpleThreadScope {
 
 	@Override
 	public void registerDestructionCallback(String name, Runnable callback) {
-		
+		// Default behavior should not get executed
 	}
 }

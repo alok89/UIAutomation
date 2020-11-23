@@ -50,7 +50,7 @@ public class ProductSearchResults extends SlowLoadableComponent<ProductSearchRes
 
 	@Override
 	protected void load() {
-
+		//Not required as of now
 	}
 
 	@Override

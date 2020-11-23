@@ -75,8 +75,9 @@ public class MovieFiltersComponent {
 							.findFirst();
 		if (filterSectionElement.isPresent()) {
 			return filterSectionElement.get();
-		} else
+		} else {
 			throw new RuntimeException(filterSection + " filter section not found");
+		}
 	}
 	
 	public WebElement getFilterOptionElement(String filterSection, String filterOption) {
@@ -87,8 +88,9 @@ public class MovieFiltersComponent {
 															.findFirst();
 		if(filterOptionElement.isPresent()) {
 			return filterOptionElement.get();
-		} else
+		} else {
 			throw new RuntimeException(filterOption+" filter option not found");
+		}
 	}
 
 }

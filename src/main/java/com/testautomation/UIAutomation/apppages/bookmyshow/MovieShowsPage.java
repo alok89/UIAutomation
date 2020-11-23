@@ -122,8 +122,9 @@ public class MovieShowsPage extends BasePage {
 														.findFirst();
 		if(movieElement.isPresent()) {
 			return movieElement.get();
-		}else 
+		}else {
 			throw new NoSuchElementException("Movie not found : "+movieName);
+		}
 	}
 
 }
