@@ -1,20 +1,22 @@
-@bookmyshow
+@BMS
 Feature: BookMyShowApp features
 	User Story : As a user, I want to test all the major functionalities of BookMyShow App
 	
-
+	@BMS-Smoke
   Scenario: Select the city as per the user's choice
     Given User is on home page
-    And City Selection popup is displayed
+    Given City Selection popup is displayed
     When User selects the city as "Pune"
     Then "Pune" city should get appeared on the app header
-    
+  
+  @BMS-UAT  
   Scenario: List all the upcoming movies
     Given User is on movies page
     When User selects the Coming Soon tab
     Then More than 1 upcoming movie should be seen listed
     
  #Passing data through EXAMPLES which is applicable to whole scenario
+  @BMS-UAT
   Scenario Outline: Filter out movies based on different conditions
     Given User is on movies page
     When User selects the Coming Soon tab
@@ -28,6 +30,7 @@ Feature: BookMyShowApp features
       | English  | Adventure,Sci-Fi |    4  |
 
  #Passing data through DATA TABLE which is applicable to only one preceded step
+  @BMS-UAT
   Scenario: List all the movie details
     Given User is on movies page
     When User selects the Coming Soon tab
@@ -39,15 +42,18 @@ Feature: BookMyShowApp features
       |Dec 2020		 |
       |3.9K    		 |
 
+  @BMS-UAT
   Scenario: List all the on-going trending movies
     When User moves to "Trending Searches Right Now" Section to search
     Then More than 1 trending movie should be listed
 
  #Need to update the workshop name as per the latest workshop
+  @BMS-UAT
   Scenario: Search for an on going workshop
     When User moves to "Workshops For All" Section to search
     Then "Using Ayurveda for a Healthy Lifestyle" workshop should be listed under all workshops
-
+    
+  @BMS-UAT
   Scenario Outline: List all the offers running on different Debit Cards
     Given User is on offers page
     When User selects "Debit Card" as payment option
@@ -61,7 +67,8 @@ Feature: BookMyShowApp features
       | INDUSIND |      2 |
       | YES			 | 			1 |
       | IDFC		 | 			1 |
-       
+      
+  @BMS-UAT      
   Scenario: Search for an event
     When User searches for an event "Art & Drawing - Junior Kids - Hobbystation"
     Then The matching event "Art & Drawing - Junior Kids - Hobbystation" should get listed in the suggestion box
