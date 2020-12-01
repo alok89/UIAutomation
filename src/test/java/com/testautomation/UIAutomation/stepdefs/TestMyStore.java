@@ -1,23 +1,24 @@
 package com.testautomation.UIAutomation.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class TestMyStore {
 
-	@Given("user is on MyStore home page")
+	@Given("user is on home page")
 	public void userIsOnMyStoreHomePage() {
 	 
 	}
 
-	@When("user navigates to dresses section {string}")
-	public void userNavigatestoDressesSection(String string) {
+	@When("user navigates to section {string}")
+	public void userNavigatestoDressesSection(String sectionName) {
 	    
 	}
 
-	@When("selects a product {string}")
-	public void selectsAProduct(String string) {
+	@And("selects a product {string}")
+	public void selectsAProduct(String productName) {
 	   
 	}
 
