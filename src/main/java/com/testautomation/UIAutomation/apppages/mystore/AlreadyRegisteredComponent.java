@@ -1,9 +1,13 @@
 package com.testautomation.UIAutomation.apppages.mystore;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import com.google.common.util.concurrent.Uninterruptibles;
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.annotations.PageComponent;
 
 @PageComponent
@@ -20,16 +24,21 @@ public class AlreadyRegisteredComponent extends UIComponent {
 	
 	@FindBy(how = How.ID, using = "SubmitLogin")
 	private WebElement submitBtn;
+	
+	@LazyAutowired
+	private MyStoreHomePage myStoreHomePage;
 
 	@Override
 	public boolean isDisplayed() {
 		return wait.until(driver -> alreadyRegistered.isDisplayed());
 	}
 	
-	public void login(String emailId, String password) {
+	public MyStoreHomePage login(String emailId, String password) {
 		setEmail(emailId);
 		setPassword(password);
-		submitBtn.submit();
+		submitBtn.click();
+		Uninterruptibles.sleepUninterruptibly(1500, TimeUnit.MILLISECONDS);
+		return myStoreHomePage;
 	}
 
 	void setEmail(String emailId) {

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -45,9 +46,10 @@ public class ToDoListPage extends BasePage {
 	}
 	
 	public void addAnItem(String itemName) {
-		actionBuilder.moveToElement(addItem_Textbox).click().build().perform();
-		actionBuilder.sendKeys(addItem_Textbox,itemName).build().perform();
-		actionBuilder.sendKeys(addItem_Textbox,Keys.ENTER).build().perform();
+		Actions actions = new Actions(driver);
+		actions.moveToElement(addItem_Textbox).click().build().perform();
+		actions.sendKeys(addItem_Textbox,itemName).build().perform();
+		actions.sendKeys(addItem_Textbox,Keys.ENTER).build().perform();
 	}
 	
 	public boolean isItemPresentInTheList(String itemName) {
@@ -66,7 +68,7 @@ public class ToDoListPage extends BasePage {
 															.findFirst();
 		if(toDoElement.isPresent()) {
 			WebElement element = toDoElement.get();
-			actionBuilder.moveToElement(element).perform();
+			new Actions(driver).moveToElement(element).perform();
 		}
 	}
 	

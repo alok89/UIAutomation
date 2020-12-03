@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import com.testautomation.UIAutomation.annotations.PageComponent;
+
+@PageComponent
 public class DressesComponent extends WomenComponent {
 	
 	@FindBy(how = How.XPATH, using = "(//ul[contains(@class, 'submenu-container')])[2]")

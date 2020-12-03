@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 import com.testautomation.UIAutomation.annotations.Page;
 import com.testautomation.UIAutomation.apppages.BasePage;
@@ -29,14 +28,16 @@ public class WBDUniversityHomePage extends BasePage {
 	@Autowired
 	private SwitchWindowService switchWindowService;
 	
-	@Value("${webdriveruniversity.contactUsPage_Title}")
-	private String contactUsPage_Title;
-	
-	@Value("${webdriveruniversity.toDoListPage_Title}")
-	private String toDoListPage_Title;
-	
-	@Value("${webdriveruniversity.iFramePage_Title}")
-	private String iFramePage_Title;
+	/*
+	 * @Value("${webdriveruniversity.contactUsPage_Title}") private String
+	 * contactUsPage_Title;
+	 * 
+	 * @Value("${webdriveruniversity.toDoListPage_Title}") private String
+	 * toDoListPage_Title;
+	 * 
+	 * @Value("${webdriveruniversity.iFramePage_Title}") private String
+	 * iFramePage_Title;
+	 */
 	
 	@FindBy(how = How.CSS, using = ".container .row a[id]")
 	private List<WebElement> section_List;
@@ -69,19 +70,19 @@ public class WBDUniversityHomePage extends BasePage {
 	
 	public ToDoListPage goToDoListPage() {
 		toDoList_Link.click();
-		switchWindowService.switchToWindowByTitle(toDoListPage_Title);
+		switchWindowService.switchToWindowByTitle(WebDriverUniversityPageTitles.TODOLIST_PAGE.getPageTitle());
 		return toDoListPage;
 	}
 	
 	public IFramePage goToIFramesPage() {
 		iFrame_Link.click();
-		switchWindowService.switchToWindowByTitle(iFramePage_Title);
+		switchWindowService.switchToWindowByTitle(WebDriverUniversityPageTitles.IFRAME_PAGE.getPageTitle());
 		return iFramePage;
 	}
 	
 	public ContactUsPage goToContactUsPage() {
 		contactUs_Link.click();
-		switchWindowService.switchToWindowByTitle(contactUsPage_Title);
+		switchWindowService.switchToWindowByTitle(WebDriverUniversityPageTitles.CONTACTUS_PAGE.getPageTitle());
 		return contactUsPage;
 	}
 

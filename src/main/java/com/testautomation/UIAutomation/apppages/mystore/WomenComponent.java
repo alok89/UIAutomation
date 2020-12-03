@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.annotations.PageComponent;
 
 @PageComponent
@@ -27,13 +28,17 @@ public class WomenComponent extends UIComponent {
 	@FindBy(how = How.LINK_TEXT, using = "Summer Dresses")
 	private WebElement summerDresses;
 	
+	@LazyAutowired
+	private ProductsComponent productsComponent;
+	
 	@Override
 	public boolean isDisplayed() {
 		return wait.until(driver -> submenu.isDisplayed());
 	}
 	
-	public void goToSummerDresses() {
+	public ProductsComponent goToSummerDresses() {
 		summerDresses.click();
+		return productsComponent;
 	}
 	
 	public void goToTShirts() {

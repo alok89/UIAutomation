@@ -20,9 +20,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<scenario.thread.count>3</scenario.thread.count>
-		<class.thread.count>3</class.thread.count>
-		<report.path>${project.basedir}/reports</report.path>
+		<scenario.thread.count>4</scenario.thread.count>
+		<!-- <class.thread.count>3</class.thread.count> -->
+		<!-- <report.path>${project.basedir}/reports</report.path> -->
 	</properties>
 
 	<dependencies>

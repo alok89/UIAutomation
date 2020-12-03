@@ -29,7 +29,7 @@ public class MenuBarComponent extends UIComponent {
 	@FindBy(how = How.LINK_TEXT, using = "Women")
 	private WebElement women;
 	
-	@FindBy(how = How.LINK_TEXT, using = "Dresses")
+	@FindBy(how = How.CSS, using = "ul.sf-menu>li>a[title='Dresses']")
 	private WebElement dresses;
 	
 	@FindBy(how = How.LINK_TEXT, using = "T-shirts")
@@ -41,13 +41,14 @@ public class MenuBarComponent extends UIComponent {
 	}
 	
 	public WomenComponent goToWomenSection() {
-		actionBuilder.moveToElement(women).perform();
+		actions.moveToElement(women).perform();
 		Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
 		return womenComponent;
 	}
 	
 	public DressesComponent goToDressesSection() {
-		actionBuilder.moveToElement(dresses).perform();
+		System.out.println("Clicking Dresses Section");
+		actions.moveToElement(dresses).perform();
 		Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
 		return dressesComponent;
 	}

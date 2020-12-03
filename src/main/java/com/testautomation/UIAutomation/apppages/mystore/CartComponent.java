@@ -22,7 +22,7 @@ public class CartComponent extends UIComponent {
 	}
 	
 	public void hoverOnCart() {
-		actionBuilder.moveToElement(cart).perform();
+		actions.moveToElement(cart).perform();
 		Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
 	}
 	

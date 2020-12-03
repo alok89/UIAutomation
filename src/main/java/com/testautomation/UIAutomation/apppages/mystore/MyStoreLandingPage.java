@@ -9,7 +9,7 @@ import com.testautomation.UIAutomation.annotations.Page;
 import com.testautomation.UIAutomation.apppages.BasePage;
 
 @Page
-public class LandingPage extends BasePage {
+public class MyStoreLandingPage extends BasePage {
 
 	@FindBy(how = How.ID, using = "header_logo")
 	private WebElement myStoreImage;

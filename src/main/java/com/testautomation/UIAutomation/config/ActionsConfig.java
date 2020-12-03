@@ -10,7 +10,7 @@ import com.testautomation.UIAutomation.annotations.LazyConfiguration;
 public class ActionsConfig {
 
 	@BeanWithPrototypeScope
-	public Actions actionsBuilder(WebDriver driver) {
+	public Actions actions(WebDriver driver) {
 		return new Actions(driver);
 	}
 	

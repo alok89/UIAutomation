@@ -1,5 +1,8 @@
 package com.testautomation.UIAutomation.apppages.mystore;
 
+import javax.annotation.PostConstruct;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,9 +19,13 @@ public abstract class UIComponent {
 	protected WebDriverWait wait;
 	
 	@LazyAutowired
-	protected Actions actionBuilder;
+	protected WebDriver driver;
 	
-	public UIComponent() {
+	@LazyAutowired
+	protected Actions actions;
+	
+	@PostConstruct
+	protected void initializeElements() {
 		PageFactory.initElements(elementLocatorFactory, this);
 	}
 	
