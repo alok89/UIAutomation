@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import com.testautomation.UIAutomation.annotations.LazyAutowired;
 import com.testautomation.UIAutomation.annotations.PageComponent;
 
 @PageComponent
@@ -18,6 +19,7 @@ public class ProductsComponent extends UIComponent {
 	@FindBy(how = How.CSS, using = "h1.page-heading>span.heading-counter")
 	private WebElement productsCount;
 	
+	@LazyAutowired
 	private ProductContainerComponent productContainerComponent;
 
 	@Override
@@ -41,13 +43,7 @@ public class ProductsComponent extends UIComponent {
 		return count;
 	}
 	
-	public void addProductToCart(String productName, String productPrice) {
-		productContainerComponent = new ProductContainerComponent(productName, productPrice);
-		if(productContainerComponent.isDisplayed()) {
-			productContainerComponent.clickAddToCart();
-		}else {
-			System.err.println("Product not listed");
-		}
+	public ProductContainerComponent getProductContainer() {
+		return productContainerComponent;
 	}
-
 }

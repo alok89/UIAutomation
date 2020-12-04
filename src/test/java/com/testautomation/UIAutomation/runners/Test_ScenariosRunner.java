@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions.SnippetType;
 @CucumberOptions (
 		features = "classpath:features",
 		glue = "com.testautomation.UIAutomation",
-		tags = "@heroku",//"@mystore", //"@webdriveruniversity" "(@BMS and @BMS-UAT) or (@BMS and @BMS-Smoke)",
+		tags = "@mystore",//"@webdriveruniversity", //"@heroku", //"(@BMS and @BMS-UAT) or (@BMS and @BMS-Smoke)",
 		monochrome = true,
 		plugin = {"pretty", 
 				  //"html:reports/cucumber-report.html",
@@ -22,7 +22,7 @@ import io.cucumber.testng.CucumberOptions.SnippetType;
 public class Test_ScenariosRunner extends AbstractTestNGCucumberTests {
 
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

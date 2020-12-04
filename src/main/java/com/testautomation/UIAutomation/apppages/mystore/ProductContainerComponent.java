@@ -21,19 +21,19 @@ public class ProductContainerComponent extends UIComponent {
 	
 	@FindBy(how = How.CSS, using = "ul.product_list>li>div.product-container")
 	private List<WebElement> productsList;
-	
-	public ProductContainerComponent(String productName, String productPrice) {
-		super();
-		this.productName = productName;
-		this.productPrice = productPrice;
-	}
 
 	@Override
 	public boolean isDisplayed() {
 		return wait.until(driver -> !productsList.isEmpty());
 	}
 	
-	public WebElement getProduct() {
+	private void setProductDetails(String productName, String productPrice) {
+		System.out.println("Setting the product details");
+		this.productName = productName;
+		this.productPrice = productPrice;
+	}
+	
+	private WebElement getProduct() {
 		By prodNameLocator = By.cssSelector("div.right-block a.product-name");
 		By prodPriceLocator = By.cssSelector("div.right-block span[itemprop='price']");
 		Optional<WebElement> product = productsList.stream()
@@ -46,16 +46,17 @@ public class ProductContainerComponent extends UIComponent {
 		return product.get();
 	}
 	
-	public WebElement hoverOnProduct() {
+	public void hoverOnProductAndAddtoCart(String productName, String productPrice) {
+		setProductDetails(productName, productPrice);
 		WebElement product = getProduct();
 		actions.moveToElement(product).perform();
 		Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
-		return product;
+		addProductToCart(product);
 	}
 	
-	public void clickAddToCart() {
-		WebElement product = hoverOnProduct();
+	private void addProductToCart(WebElement product) {
 		product.findElement(By.cssSelector("div.right-block a.button[title='Add to cart']")).click();
+		Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
 	}
 
 }

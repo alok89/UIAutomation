@@ -58,7 +58,7 @@ public class TestMyStore {
 
 	@And("selects a product by {string} and {string}")
 	public void selectsAProduct(String productName, String productPrice) {
-	   products.addProductToCart(productName, productPrice);
+		products.getProductContainer().hoverOnProductAndAddtoCart(productName, productPrice);
 	}
 
 	@Then("product should get added to cart")

@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.springframework.context.ApplicationContext;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.testautomation.UIAutomation.annotations.LazyAutowired;
@@ -13,6 +14,9 @@ import com.testautomation.UIAutomation.utils.ClickableElementLocatorFactoryServi
 
 @PageComponent
 public class MenuBarComponent extends UIComponent {
+	
+	@LazyAutowired
+	private ApplicationContext appContext;
 	
 	@LazyAutowired
 	private ClickableElementLocatorFactoryService elementLocatorFactory;

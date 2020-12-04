@@ -1,6 +1,6 @@
 package com.testautomation.UIAutomation.stepdefs;
 
-import static org.testng.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
@@ -57,25 +57,25 @@ public class TestHerokuApp {
 	@Given("user is on HerokuApp Landing Page")
 	public void userIsOnHerokuAppLanding_Page() {
 		herokuAppLandingPage.goTo(url);
-		assertTrue(herokuAppLandingPage.at());
+		assertThat(herokuAppLandingPage.at()).isTrue();
 	}
 
 	@When("user hit the links")
 	public void userHitTheLinks() {
 		links = herokuAppLandingPage.getAllLinks();
-		assertTrue(!links.isEmpty());
+		assertThat(links).isNotEmpty();
 	}
 
 	@Then("it should show all the broken links by returning the error code")
 	public void itShouldShowAllTheBrokenLinksByReturningTheErrorCode() {
 		List<String> workingLinks = herokuAppLandingPage.getAllWorkingLinks();
-		assertTrue(workingLinks.size() > 35);
+		assertThat(workingLinks).hasSizeGreaterThan(35);
 	}
 	
 	@When("user navigates to Secure File Download Page")
 	public void userNavigatesToSecureFileDownloadPage() {
 		fileDownloadPage = herokuAppLandingPage.goToSecureFileDownloadPage();
-		assertTrue(fileDownloadPage.at());
+		assertThat(fileDownloadPage.at()).isTrue();
 	}
 
 	@And("download the {string} link")
@@ -85,25 +85,25 @@ public class TestHerokuApp {
 
 	@Then("the {string} file should get downloaded")
 	public void theFileShouldGetDownloaded(String fileName) {
-		assertTrue(fileDownloadService.hasFileDownloaded(fileName));
+		assertThat(fileDownloadService.hasFileDownloaded(fileName)).isTrue();
 	}
 
 	@When("user navigates to Sortable Data Tables Page")
 	public void userNavigatesToSortableDataTablesPage() {
 		dataTablesPage = herokuAppLandingPage.goToDataTablesPage();
-		assertTrue(dataTablesPage.at());
+		assertThat(dataTablesPage.at()).isTrue();
 	}
 
 	@Then("user should be able to fetch all the emailids from the datatable")
 	public void userShouldBeAbleToFetchAllTheEmailidsFromTheDatatable() {
 		List<String> emailIds = dataTablesPage.getAllValuesFromAColumn(columnName);
-		assertTrue(emailIds.size() == 4);
+		assertThat(emailIds).hasSize(4);
 	}
 
 	@Given("user is on dynamic loading page")
 	public void userIsOnDynamicLoadingPage() {
 	    dynamicLoadingPage = herokuAppLandingPage.goToDynamicLoadingPage();
-	    assertTrue(dynamicLoadingPage.at());
+	    assertThat(dynamicLoadingPage.at()).isTrue();
 	}
 
 	@When("user clicks on {string}")
@@ -119,13 +119,13 @@ public class TestHerokuApp {
 	@Then("the element {string} should get rendered")
 	public void theElementShouldGetRendered(String expectedText) {
 	    dynamicLoadingPage.waitForElementToBeFound();
-	    assertEquals(dynamicLoadingPage.getElementText(), expectedText);
+	    assertThat(dynamicLoadingPage.getElementText()).isEqualTo(expectedText);
 	}
 
 	@Given("user is on horizontal slider page")
 	public void userIsOnHorizontalSliderPage() {
 	    horizontalSliderPage = herokuAppLandingPage.goToHorizontalSliderPage();
-	    assertTrue(horizontalSliderPage.at());
+	    assertThat(horizontalSliderPage.at()).isTrue();
 	}
 
 	@When("moves the slider to {string}")
@@ -136,13 +136,13 @@ public class TestHerokuApp {
 	@Then("the {string} should get updated accordingly")
 	public void theShouldGetUpdatedAccordingly(String expectedRange) {
 	    String actualValue = String.valueOf(horizontalSliderPage.getSliderValue());
-	    assertEquals(actualValue, expectedRange);
+	    assertThat(actualValue).isEqualTo(expectedRange);
 	}
 
 	@Given("user is on key_presses page")
 	public void userIsOnKeyPressesPage() {
 	    keyPressesPage = herokuAppLandingPage.goToKeyPressesPage();
-	    assertTrue(keyPressesPage.at());
+	    assertThat(keyPressesPage.at()).isTrue();
 	}
 
 	@When("user enters the {string}")
@@ -156,7 +156,7 @@ public class TestHerokuApp {
 	    if(expectedKey.equals("ARROW_RIGHT")) {
 	    	expectedKey = "RIGHT";
 	    }
-	    assertEquals(actualKey, expectedKey);
+	    assertThat(actualKey).isEqualTo(expectedKey);
 	}
 
 }

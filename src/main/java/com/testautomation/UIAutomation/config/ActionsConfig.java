@@ -1,3 +1,4 @@
+
 package com.testautomation.UIAutomation.config;
 
 import org.openqa.selenium.WebDriver;
@@ -13,5 +14,5 @@ public class ActionsConfig {
 	public Actions actions(WebDriver driver) {
 		return new Actions(driver);
 	}
-	
+
 }
